@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>MAX - Industrial Virtual Assistant</title>
+
+        <meta name="description" content="Source code generated using layoutit.com">
+        <meta name="author" content="LayoutIt!">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap.min.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
+        <style>
+                @font-face {
+                font-family: 'MyWebFont';
+                src: url({{ url_for('static', filename='fonts/nasalization-rg.ttf') }});
+            }
+            .my_font_title {
+                text-align: center;
+                font-family: MyWebFont;
+                color: #83BFEF;
+                font-size:xx-large;
+                padding-top: 20px;
+            }
+            .my_font_task_inact {
+                text-align: center;
+                font-family: MyWebFont;
+                color: #83BFEF;
+                font-size: x-large;
+                padding-top: 15px;
+            }
+            .my_font_task_act {
+                text-align: center;
+                font-family: MyWebFont;
+                color: #FFC000;
+                font-size: x-large;
+                padding-top: 15px;
+            }
+            .my_font_staff_name {
+                text-align: center;
+                font-family: MyWebFont;
+                color: white;
+                font-size:x-large;
+                padding-right: 50px;
+            }
+            .my_font_task_det_exp {
+                text-align: justify;
+                font-family: MyWebFont;
+                color: #FFC000;
+                font-size:large;
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            .my_font_dia_title {
+                text-align: center;
+                font-family: MyWebFont;
+                color: #15D6D0;
+                font-size:x-large;
+                padding-top: 10px;
+                padding-left: 120px;
+            }
+            .my_font_NTRA_title {
+                text-align: center;
+                font-family: MyWebFont;
+                color: #83BFEF;
+                font-size:x-large;
+                padding-top: 10px;
+                padding-left: 10px;
+            }
+            .my_font_NTRA_exp {
+                text-align: justify;
+                font-family: MyWebFont;
+                color: #83BFEF;
+                font-size:large;
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        </style>
+  </head>
+  <body onload="loadImage()">
+
+    <div class="fixed_width_heigh">
+        <div class="row margin_first_row">
+            <div class="col-md-7" >
+                <div class="row">
+                    <div class="col-md-4" >
+                        <img class="max_logo" src="{{url_for ('static',filename='photos/max_logo.png')}}" id="max_logo">
+                    </div>
+                    <div class="col-md-1" >
+                        <img src="{{url_for ('static',filename='photos/glow.gif')}}" style="width: 30px; padding-top: 20px;padding-left: 10px">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <img class="robot_logo" src="{{url_for ('static',filename='photos/robot.png')}}">
+            </div>
+        </div>
+        <div class="row margin_second_row" style="height: 200px"  >
+            <div class="col-md-2" >
+            </div>
+            <div class="col-md-2" >
+                <img id="ole_profile">
+            </div>
+             <div class="col-md-1" >
+                <img id="ole_num" style="width: 35px">
+            </div>
+            <div class="col-md-2" >
+                <img id="simon_profile">
+            </div>
+             <div class="col-md-1" >
+                <img id="simon_num" style="width: 35px">
+            </div>
+            <div class="col-md-2" >
+                <img id="dimi_profile">
+            </div> <div class="col-md-1" >
+                <img id="dimi_num" style="width: 35px">
+            </div>
+
+            <div class="col-md-1" >
+            </div>
+        </div>
+        <div class="row" style="height: 80px"  >
+            <div class="col-md-2" >
+            </div>
+            <div class="col-md-3" >
+                <div class="my_font_staff_name">Ole</div>
+            </div>
+            <div class="col-md-3" >
+               <div class="my_font_staff_name">Simon</div>
+            </div>
+            <div class="col-md-3" >
+               <div class="my_font_staff_name">Dimi</div>
+            </div>
+            <div class="col-md-1" >
+            </div>
+        </div>
+        <div class="row" style="height: 200px">
+           <div class="col-md-2" >
+            </div>
+            <div class="col-md-2" >
+                <img id="morten_profile">
+            </div>
+             <div class="col-md-1" >
+                <img id="morten_num" style="width: 35px">
+            </div>
+            <div class="col-md-2" >
+                <img id="casper_profile">
+            </div>
+             <div class="col-md-1" >
+                <img id="casper_num" style="width: 35px">
+            </div>
+            <div class="col-md-2" >
+                <img id="chen_profile">
+            </div> <div class="col-md-1" >
+                <img id="chen_num" style="width: 35px">
+            </div>
+
+            <div class="col-md-1" >
+            </div>
+        </div>
+        <div class="row" style="height: 15px"></div>
+         <div class="row" style="height: 80px"  >
+            <div class="col-md-2" >
+            </div>
+            <div class="col-md-3" >
+                <div class="my_font_staff_name">Morten</div>
+            </div>
+            <div class="col-md-3" >
+               <div class="my_font_staff_name">Casper</div>
+            </div>
+            <div class="col-md-3" >
+               <div class="my_font_staff_name">Chen</div>
+            </div>
+            <div class="col-md-1" >
+            </div>
+        </div>
+        <div class="row" style="height: 100px"  >
+             <div class="col-md-2" >
+             </div>
+            <div class="col-md-8" >
+                <div class="typingMax">
+                        <table style="width:100%">
+                            <tr>
+                                <td style=" width:8%;color: #449d44; font-size:large;vertical-align:top">Max: </td>
+                                <td>
+                                  <div style="padding-top: 5px">
+                                    <h1 style="color: #449d44; font-size:large;" id="Max"></h1>
+                                  </div>
+                                  <div style="font: 0px/0px sans-serif;clear: both;display: block"></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+             </div>
+            <div class="col-md-2" >
+
+             </div>
+        </div>
+    </div>
+        <script type="text/javascript" src="{{url_for ('static',filename='js/jquery.min.js')}}"></script>
+        <script type="text/javascript" src="{{url_for ('static',filename='js/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{url_for ('static',filename='js/scripts.js')}}"></script>
+    </body>
+</html>

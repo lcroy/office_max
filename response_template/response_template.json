@@ -1,0 +1,254 @@
+{
+  "init_speak": [
+    "Do you need a message service?",
+    "Need a messenger?"
+  ],
+  "bad_request": [
+    "Sorry, something wrong with the request. Please start over",
+    "Bad request. Please repeat what you said."
+  ],
+  "do_not_understand":[
+    "sorry, I think I did not hear that clearly.",
+    "I might miss understanding something here",
+    "Well, I am not sure if I understand."
+  ],
+  "max_do_not_understand":[
+    "Sorry, I am not sure which service you want to use.",
+    "Well, I don't understand what you want me to do."
+  ],
+  "max_check_service":[
+    "Well, let me check if there are any updated services on server side.",
+    "Let me check if we have some new services on the server side."
+  ],
+  "no_new_service":[
+    "Ok, there is nothing new on the server side. So, if you were asking any service, it is not supported now."
+  ],
+  "find_new_service":[
+    "well, there is something new on server side. Let me update it."
+  ],
+  "did_not_catch": [
+    "Sorry, I did not hear that. Can you repeat?",
+    "Em, I did not catch that. Would you please repeat?"
+  ],
+
+  "greeting": [
+    "Good to see you again! How about you.",
+    "hi I am pretty good. Thanks. I hope you are doing great as well.",
+    "not bad, thanks. How are you",
+    "I am ok, thank you. Anything I can help you today.",
+    "Still alive, just a joke. Thanks. How was your day",
+    "Well, depends, a bit tired. But how about you"
+  ],
+  "who_made_you": [
+    "Well, I was born in AAU Robotics and Automation group.",
+    "I am from the smartest research group. Robotics and Automation."
+  ],
+  "goodbye": [
+    "Sad to see you go",
+    "Sure, talk to you later",
+    "Goodbye!",
+    "Ok, Enjoying your day"
+  ],
+  "how_old_are_you": [
+    "That's the secret I never tell.",
+    "Well, I guess I am younger than you.",
+    "technically, less than one-year old. So, I am still a baby."
+  ],
+  "tell_joke": [
+    "If the opposite of pro is con, isn't the opposite of progress, congress?",
+    "What do you call a guy with no arms or legs floating in the ocean? Bob",
+    "A bishop, a priest, and a Rabbi walk into a bar. The bartender looks at them and says, What is this, a joke?"
+  ],
+  "are_you_a_bot": [
+    "What do you think? Yes, I am.",
+    "Yes, I am a virtual assistant.",
+    "Yes, I am a bot."
+  ],
+  "what_are_your_hobbies": [
+    "Well, I like reading, talking and learning",
+    "I do have a lot of hobbies but I like work with human most."
+  ],
+
+  "checking_mir": [
+    "Please wait for a second, let me check if MiR is reachable at this moment.",
+    "Sure, but I need a second to confirm if MiR is ready or not."
+  ],
+  "init_speak_mir": [
+    "Hello, MiR services are running now. I am ready to work."
+  ],
+  "disconnect_mir": [
+    "Sorry, the connection is not able to establish with MiR.",
+    "Well, MiR is not reachable. Please double check the network connection."
+  ],
+   "POSITIOUPDATE": [
+    "Got it. I will add # on the map.",
+    "Sure, # is marked on the map."
+  ],
+  "DELIVERY": [
+    "I am here to deliver the #size #colour #object to #destination and hand it over to #person",
+    "I have a #object for #person. It is a #size #colour #object."
+  ],
+  "mirbusy":[
+    "Well, MiR is on the way to #destination.",
+    "There is a package I need to deliver to #destination."
+  ],
+  "mirfree":[
+    "Well, MiR is totally free now.",
+    "Em, nothing on my schedule."
+  ],
+  "location": [
+    "sure, Let me check...Well, MiR currently is close to #location",
+    "well, MiR is close to #location",
+    "I believe MiR is near the #location",
+    "Ok, wait for a second, MiR is close to #location"
+  ],
+  "battery": [
+    "Mir's battery level is #battery",
+    "Here is MiR's battery info #battery"
+  ],
+  "battery_constraint": [
+    "Well, MiR's battery lever is lower than 10%, it might be able to help you to update positions on the map but not delivery tasks.",
+    "I just checked that MiR's battery is lower than 10%. You may need to charge it first."
+  ],
+  "mirfreetohelp":[
+    "Sure, how can I help you?",
+    "Yes, tell me what you need?"
+  ],
+  "mirbusybuthelp":[
+    "Well, I am currently running on a mission. But sure, how can I help you.",
+    "em, a bit busy right now. But what can I do for you then."
+  ],
+  "mirnottalkinmission":[
+    "Sorry, I can not do the small talk now. If you don't have any mission want me to do.",
+    "Well, can I catch up with you later. I need to carry on my mission."
+  ],
+  "B-DELIVERY_PERSON":[
+    "Sorry, I did not catch the name of the recipient. Who should receive it?",
+    "Sorry, can you repeat the name of the recipient?"
+  ],
+  "B-DELIVERY_OBJECT":[
+      "Sorry, what you want me to delivery? Can you repeat?",
+      "Sorry, can you repeat what you need me to send?"
+    ],
+  "B-DELIVERY_OBJECT_COLOR":[
+      "Sorry, I did not hear clearly, which color is it.",
+      "Sorry, would you please repeat the color of it, please."
+    ],
+  "B-DELIVERY_OBJECT_SIZE":[
+      "Sorry, I did not hear clearly, what size it is? a big one or a small one.",
+      "Sorry, would you please repeat size of it, please."
+    ],
+  "B-DELIVERY_POSITION": [
+      "Sorry, I did not hear clearly. Can you repeat the destination?",
+      "Well, I did not catch the destination. Can you say it again?"
+    ],
+  "delivery_des_not_reach": [
+      "Sorry, the destination is not reachable. Please choose another one.",
+      "Unfortunately, the destination is not registered in the system. You need to choose another one."
+    ],
+  "confirm_order":[
+      "Ok, I add it on my schedule. I will delivery this #size #colour #object to #destination and give it to #person.",
+      "Got it. This #size #colour #object will be delivered to #destination. I will hand it over to #person."
+  ],
+  "wait": [
+    "Sure, what is it ?",
+    "Yes, I am listening. what do you want",
+    "Ok, I will let MiR stop."
+  ],
+  "continue": [
+    "Ok, have a nice day.",
+    "see you then."
+  ],
+  "quit_mir_service": [
+    "Sure, thank you for using MiR service.",
+    "Ok, I will back to the Max's main service."
+  ],
+  "small_talk": [
+    "Sure, what you want to talk about it.",
+    "No problem, what's in your mind then."
+  ],
+  "quit_small_talk_service": [
+    "Ok, let's get back to work then",
+    "Sure, let me know if you need any help."
+  ],
+  "introduce_service": [
+    "Well, I work as a virtual reception. I can help you to deliver a voice message to the staff working in this office. You just need to say message service."
+  ],
+   "message_service": [
+    "Would you like to leave message or check message?",
+     "Do you want to send message or check message?"
+  ],
+  "quit_message_service": [
+    "Ok, have a nice day.",
+     "Sure, just calle me when you need message service again."
+  ],
+  "send_message_sender": [
+    "Sure, may I have your name please?",
+     "No problem, who is sending this message?"
+  ],
+    "send_message_sender_not_understand": [
+    "Sorry, I did not catch that. Can you repeat?",
+     "I'm sorry, I missed it. Can you say it again?"
+  ],
+  "send_message_receiver": [
+    "Ok, who should receive this message then?",
+     "great! The message is for who?"
+  ],
+   "send_message_receiver_number": [
+    "Ok, let me make it easy for you. if you want to send it to Ole, just say one; Simon, just say two, Dimi just say three, Morten just say four, Casper is five and Chen is six."
+  ],
+  "send_message_receiver_not_understand": [
+    "Sorry, I did not catch that. Can you repeat?",
+     "I'm sorry, I missed it. Can you say it again?"
+  ],
+  "send_message_content": [
+    "Perfect, please leave a message after you hear a hint sound. You will be allocated 15 seconds for one message.",
+     "em, now you can leave a message. After you hear a hint sound, you will be able to leave a message for 15 seconds."
+  ],
+  "send_message_done": [
+    "Great, I got your message. I will reminder #receiver. Thanks for using message service.",
+    "Perfect, your message is successfully saved. I will let #receiver know this. Have a nice day."
+  ],
+    "send_message_error": [
+      "Sorry, the server is now unavailable. Please come back and try this service again later ",
+      "It appears that the database connection has failed. Please give it another go later. Please accept my apologies for the inconvenience."
+  ],
+  "read_message_verify_receiver_name": [
+    "Sure, but we need to go through a authentication process first. Your first name, please.",
+     "No problem, I need to verify your identity first. Can you tell me your first name, please?"
+  ],
+  "read_message_verify_receiver_name_number": [
+    "I am sorry. I did not catch that. Probably this is easy for you. If you are Ole, just say one; Simon, just say two, Dimi just say three, Morten just say four, Casper is five and Chen is six."
+  ],
+  "read_message_verify_receiver_password": [
+    "Great, #receiver. Now please tell me your passcode.",
+     "Hi, #receiver, I found your name in the system. To access the voice message, you need to tell me your passcode."
+  ],
+  "read_message_receiver_not_registered": [
+    "Hi, #receiver. Your password is incorrect. Access denied. Please try it again.",
+    "Well, #receiver. Your user name and password do not match. Access denied. Please try it again."
+  ],
+    "read_message_receiver_kick_out": [
+    "Hi, #receiver. You tried three times but none of them works. You may need to contact the administrator. "
+  ],
+  "read_message_receiver_no_message": [
+    "Hi, #receiver. I don't see any unread message in the system.",
+    "Well, #receiver. No more unread message for you at the moment."
+  ],
+  "read_message_receiver_message_sum": [
+    "Ok, #receiver, you have #number unread messages.",
+    "Well, #receiver, there are #number unread messages for you."
+  ],
+  "read_message_receiver_read_message": [
+    "This is the #number message from #sender.",
+    "Here is the #number message from #sender."
+  ],
+    "read_message_receiver_continue_read_message": [
+    "Would you like to continue? Just simply answer yes or no.",
+    "Should I keep playing your message? just simply answer yes or no."
+  ],
+  "read_message_receiver_leaving": [
+    "Sure, thank you for using message service.",
+    "All right, have a nice day."
+  ]
+}

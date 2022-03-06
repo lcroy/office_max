@@ -10,6 +10,8 @@ import pygame
 import subprocess
 import json
 import datetime
+from pocketsphinx import LiveSpeech
+from test import *
 
 from small_talk_service.call_small_talk_service import call_small_talk
 from messenger_service.call_message_service import call_message
@@ -34,56 +36,135 @@ class Max:
 
     # Google service to recognize the speech
     def speech_to_text_google(self):
-        # Set American English
-        r = sr.Recognizer()
-        with sr.Microphone(sample_rate=self.sample_rate, chunk_size=self.chunk_size, device_index=0) as source:
-            # Adjusts the energy threshold dynamically using audio from source (an AudioSource instance) to account for ambient noise.
-            print("Please wait one second for calibrating microphone...")
-            r.pause_threshold = 0.8
-            r.dynamic_energy_threshold = True
-            r.adjust_for_ambient_noise(source, duration=1)
-            print("Ok, microphone is ready...")
-            # p = vlc.MediaPlayer(self.hint_sound)
-            # p.play()
-            playsound.playsound(self.hint_sound, True)
-            audio = r.listen(source, timeout = None)
-            transcript = ""
-            try:
-                transcript = r.recognize_google(audio, language="en-US")
-                print('You: ' + transcript)
-            except:
-                print('Max: I did not hear anything....')
+        """performs keyword-triggered speech recognition with input microphone"""
+        speech_config = speechsdk.SpeechConfig(subscription="946996bf23eb4cd583aecb0a2c3ad040", region="northeurope")
 
-        return transcript.lower()
+        # Creates an instance of a keyword recognition model. Update this to
+        # point to the location of your keyword recognition model.
+        model = speechsdk.KeywordRecognitionModel("973bb8bd-9de7-4921-9b73-ec8644513730.table")
 
-    # Microsoft service to recognize speech
-    def speech_to_text_microsoft(self):
-        audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
-        speech_config = speechsdk.SpeechConfig(subscription="f6bd8f851e48430ea0ea46bb47fad10a", region="northeurope")
-        speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
+        # The phrase your keyword recognition model triggers on.
+        keyword = "hey max"
+
+        speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
         done = False
         result = ''
 
         def stop_cb(evt):
-            """callback that stops continuous recognition upon receiving an event `evt`"""
-            nonlocal result
-            result = evt.result.text
-            # Stop continuous speech recognition
-            speech_recognizer.stop_continuous_recognition()
+            """callback that signals to stop continuous recognition upon receiving an event `evt`"""
+            print('CLOSING on {}'.format(evt))
             nonlocal done
             done = True
-            print("User: " + result)
+
+        def recognizing_cb(evt):
+            """callback for recognizing event"""
+            if evt.result.reason == speechsdk.ResultReason.RecognizingKeyword:
+                print('RECOGNIZING KEYWORD: {}'.format(evt))
+            elif evt.result.reason == speechsdk.ResultReason.RecognizingSpeech:
+                print('RECOGNIZING: {}'.format(evt))
+
+        def recognized_cb(evt):
+            """callback for recognized event"""
+            nonlocal result
+            result = evt.result.text
+            print("User said:" + result)
+            if evt.result.reason == speechsdk.ResultReason.RecognizedKeyword:
+                print('RECOGNIZED KEYWORD: {}'.format(evt))
+            elif evt.result.reason == speechsdk.ResultReason.RecognizedSpeech:
+                print('RECOGNIZED: {}'.format(evt))
+            elif evt.result.reason == speechsdk.ResultReason.NoMatch:
+                print('NOMATCH: {}'.format(evt))
 
         # Connect callbacks to the events fired by the speech recognizer
-        speech_recognizer.recognized.connect(lambda evt: stop_cb(evt) if evt.result.text != "" else print("Max: I did not hear anything..."))
+        speech_recognizer.recognizing.connect(recognizing_cb)
+        speech_recognizer.recognized.connect(recognized_cb)
+        speech_recognizer.session_started.connect(lambda evt: print('SESSION STARTED: {}'.format(evt)))
+        speech_recognizer.session_stopped.connect(lambda evt: print('SESSION STOPPED {}'.format(evt)))
+        speech_recognizer.canceled.connect(lambda evt: print('CANCELED {}'.format(evt)))
+        # stop continuous recognition on either session stopped or canceled events
+        speech_recognizer.session_stopped.connect(stop_cb)
+        speech_recognizer.canceled.connect(stop_cb)
 
-        # Start continuous speech recognition
-        speech_recognizer.start_continuous_recognition()
+        # Start keyword recognition
+        speech_recognizer.start_keyword_recognition(model)
+        print('Max: now you can call Max.'.format(keyword))
         while not done:
-            time.sleep(.1)
+            time.sleep(.5)
 
+        speech_recognizer.stop_keyword_recognition()
         return result.lower()
+
+        # speech = LiveSpeech(lm=False, keyphrase='max', kws_threshold=1e-20)
+        # print("Max: You can call the keywords now...")
+        # for phrase in speech:
+        #     list = phrase.segments(detailed=True)
+        #     if len(list) > 0:
+        #         try:
+        #             if ((list[0][0] == 'max') or (list[0][0] == 'Max')):
+        #                 print(list[0][0])
+        #                 return 'Max'
+        #         except:
+        #             continue
+        # # Set American English
+        # r = sr.Recognizer()
+        # with sr.Microphone(sample_rate=self.sample_rate, chunk_size=self.chunk_size, device_index=0) as source:
+        #     # Adjusts the energy threshold dynamically using audio from source (an AudioSource instance) to account for ambient noise.
+        #     print("Please wait one second for calibrating microphone...")
+        #     r.pause_threshold = 0.8
+        #     r.dynamic_energy_threshold = True
+        #     r.adjust_for_ambient_noise(source, duration=1)
+        #     print("Ok, microphone is ready...")
+        #     # p = vlc.MediaPlayer(self.hint_sound)
+        #     # p.play()
+        #     playsound.playsound(self.hint_sound, True)
+        #     audio = r.listen(source, timeout = None)
+        #     transcript = ""
+        #     try:
+        #         transcript = r.recognize_google(audio, language="en-US")
+        #         print('You: ' + transcript)
+        #     except:
+        #         print('Max: I did not hear anything....')
+        #
+        # return transcript.lower()
+
+    # Microsoft service to recognize speech
+    def speech_to_text_microsoft(self):
+        speech_config = speechsdk.SpeechConfig(subscription="f6bd8f851e48430ea0ea46bb47fad10a",
+                                               region="northeurope")
+        speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
+
+        while True:
+            print("Speak into your microphone.")
+            result = speech_recognizer.recognize_once_async().get()
+            if len(result.text) > 0:
+                return result.text
+        # audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
+        # speech_config = speechsdk.SpeechConfig(subscription="f6bd8f851e48430ea0ea46bb47fad10a", region="northeurope")
+        # speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
+        #
+        # done = False
+        # result = ''
+        #
+        # def stop_cb(evt):
+        #     """callback that stops continuous recognition upon receiving an event `evt`"""
+        #     nonlocal result
+        #     result = evt.result.text
+        #     # Stop continuous speech recognition
+        #     speech_recognizer.stop_continuous_recognition()
+        #     nonlocal done
+        #     done = True
+        #     print("User: " + result)
+        #
+        # # Connect callbacks to the events fired by the speech recognizer
+        # speech_recognizer.recognized.connect(lambda evt: stop_cb(evt) if evt.result.text != "" else print("Max: I did not hear anything..."))
+        #
+        # # Start continuous speech recognition
+        # speech_recognizer.start_continuous_recognition()
+        # while not done:
+        #     time.sleep(.1)
+        #
+        # return result.lower()
 
     # Text to Speech - generate audio file
     def generate_botx_res_mp3(self, cfg, text):
@@ -126,9 +207,9 @@ class Max:
         # Creates a speech synthesizer using the default speaker as audio output.
         speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
         print("Max: " + text)
-        p_typing_audio = subprocess.Popen(["python", cfg.typing_audio_script])
+        # p_typing_audio = subprocess.Popen(["python", cfg.typing_audio_script])
         result = speech_synthesizer.speak_text(text)
-        p_typing_audio.terminate()
+        # p_typing_audio.terminate()
 
     def get_response(self, text, requested_service, client_slot_result):
         parameters = {'message':text, 'requested_service': requested_service, 'client_slot_result':client_slot_result}

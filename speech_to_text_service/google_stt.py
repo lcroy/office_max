@@ -168,6 +168,6 @@ def google_stt():
 
     return result
 
-
+#
 # if __name__ == "__main__":
 #     main()

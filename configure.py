@@ -65,12 +65,12 @@ class Config:
         self.trigger_word_swarm = ["swarm"]
         self.trigger_word_quit_mir = ['stop', 'back']
         self.trigger_word_small_talk = ['small talk', "have a chat"]
-        self.trigger_word_quit_small_talk = ['home', 'stop']
+        self.trigger_word_quit_small_talk = ['home', 'stop', 'no', 'not']
         self.trigger_word_introduce_capability = ['introduce', 'explain']
         self.trigger_word_message_service = ['message service', 'messages services', 'messages service', 'message services', 'message', 'yes', 'sure']
         self.trigger_word_check_message = ['check', 'read', 'listen']
-        self.trigger_word_send_message = ['send', 'leave', 'deliver']
-        self.trigger_word_quit_message = ['home', 'stop']
+        self.trigger_word_send_message = ['send', 'leave', 'deliver', 'give']
+        self.trigger_word_quit_message = ['home', 'stop', 'no', 'not']
         self.trigger_word_office_staff = ['simon', 'ole', 'casper', 'dimi', 'dimitris', 'cheng', 'chen', 'morten']
         self.trigger_word_office_staff_num = ['one', 'two', 'three', 'four', 'five', 'six', '1', '2', '3', '4', '5', '6']
         self.trigger_word_continue_listen = ['yes', 'sure', 'of course', 'keep']
@@ -91,7 +91,7 @@ class Config:
         self.client_service_list_path = os.path.join(self.robot_service_management_path, 'service_list.json')
 
         #audio=====================================
-        self.typing_audio_mp3 = os.path.join(self.project_path, 'static/audio/static_sounds_typing.mp3')
+        self.typing_audio_mp3 = os.path.join(self.project_path, 'static/audio/static_sounds_fade.mp3')
         self.typing_audio_script = os.path.join(self.project_path, 'static/audio/typing_audio.py')
 
         # LSTM Approach

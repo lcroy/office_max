@@ -65,54 +65,54 @@ def call_message(max, cfg, text, response_template):
                 # waiting for receiver's name
                 text = max.speech_to_text_microsoft()
                 if len(text) > 0:
-                    if any(key in text.casefold() for key in ['ole', 'Ole']):
+                    if any(key in text.casefold() for key in ['ole', 'Ole', 'one', '1']):
                         receiver = 'Ole'
                         break
-                    elif any(key in text.casefold() for key in ['Simon', 'simon']):
+                    elif any(key in text.casefold() for key in ['Simon', 'simon', 'two', '2']):
                         receiver = 'Simon'
                         break
-                    elif any(key in text.casefold() for key in ['Dimitris', 'dimistris', 'dimi', 'Dimi']):
+                    elif any(key in text.casefold() for key in ['Dimitris', 'dimistris', 'dimi', 'Dimi', 'three', '3']):
                         receiver = 'Dimi'
                         break
-                    elif any(key in text.casefold() for key in ['morten', 'Morten']):
+                    elif any(key in text.casefold() for key in ['morten', 'Morten', 'four', '4']):
                         receiver = 'Morten'
                         break
-                    elif any(key in text.casefold() for key in ['Casper', 'casper']):
+                    elif any(key in text.casefold() for key in ['Casper', 'casper', 'five', '5']):
                         receiver = 'Casper'
                         break
-                    elif any(key in text.casefold() for key in ['Chen', 'chen']):
+                    elif any(key in text.casefold() for key in ['Chen', 'chen', 'Cheng', 'cheng', 'six', '6']):
                         receiver = 'Chen'
                         break
-                    else:
-                        while True:
-                            text = random.choice(response_template['send_message_receiver_number'])
-                            # update to the response to the db
-                            reply_result = res_max(cfg.dataset_path_db, 'write', text)
-                            max.text_to_speech_microsoft(cfg, text)
-                            text = max.speech_to_text_microsoft()
-                            if any(key in text.casefold() for key in ['one','1']):
-                                receiver = 'Ole'
-                                break
-                            elif any(key in text.casefold() for key in ['two','2']):
-                                receiver = 'Simon'
-                                break
-                            elif any(key in text.casefold() for key in ['three', '3']):
-                                receiver = 'Dimi'
-                                break
-                            elif any(key in text.casefold() for key in ['four', '4']):
-                                receiver = 'Morten'
-                                break
-                            elif any(key in text.casefold() for key in ['five', '5']):
-                                receiver = 'Casper'
-                                break
-                            elif any(key in text.casefold() for key in ['six', '6']):
-                                receiver = 'Chen'
-                                break
-                            else:
-                                continue
-                        break
+                    # else:
+                    #     while True:
+                    #         # text = random.choice(response_template['send_message_receiver_number'])
+                    #         # update to the response to the db
+                    #         reply_result = res_max(cfg.dataset_path_db, 'write', text)
+                    #         # max.text_to_speech_microsoft(cfg, text)
+                    #         # text = max.speech_to_text_microsoft()
+                    #         if any(key in text.casefold() for key in ['one','1']):
+                    #             receiver = 'Ole'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['two','2']):
+                    #             receiver = 'Simon'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['three', '3']):
+                    #             receiver = 'Dimi'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['four', '4']):
+                    #             receiver = 'Morten'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['five', '5']):
+                    #             receiver = 'Casper'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['six', '6']):
+                    #             receiver = 'Chen'
+                    #             break
+                    #         else:
+                    #             continue
+                    #     break
 
-                text = random.choice(response_template['send_message_receiver_not_understand'])
+                text = random.choice(response_template['send_message_receiver_number'])
                 # update to the response to the db
                 reply_result = res_max(cfg.dataset_path_db, 'write', text)
                 max.text_to_speech_microsoft(cfg, text)
@@ -154,54 +154,54 @@ def call_message(max, cfg, text, response_template):
                 # waiting for the first name
                 text = max.speech_to_text_microsoft()
                 if len(text) > 0:
-                    if any(key in text.casefold() for key in ['ole', 'Ole']):
+                    if any(key in text.casefold() for key in ['ole', 'Ole', 'one', '1']):
                         receiver = 'Ole'
                         break
-                    elif any(key in text.casefold() for key in ['Simon', 'simon']):
+                    elif any(key in text.casefold() for key in ['Simon', 'simon', 'two', '2']):
                         receiver = 'Simon'
                         break
-                    elif any(key in text.casefold() for key in ['Dimitris', 'dimistris', 'dimi', 'Dimi']):
+                    elif any(key in text.casefold() for key in ['Dimitris', 'dimistris', 'dimi', 'Dimi', 'three', '3']):
                         receiver = 'Dimi'
                         break
-                    elif any(key in text.casefold() for key in ['morten', 'Morten']):
+                    elif any(key in text.casefold() for key in ['morten', 'Morten', 'four', '4']):
                         receiver = 'Morten'
                         break
-                    elif any(key in text.casefold() for key in ['Casper', 'casper']):
+                    elif any(key in text.casefold() for key in ['Casper', 'casper', 'five', '5']):
                         receiver = 'Casper'
                         break
-                    elif any(key in text.casefold() for key in ['Chen', 'chen']):
+                    elif any(key in text.casefold() for key in ['Chen', 'chen', 'Cheng', 'cheng', 'six', '6']):
                         receiver = 'Chen'
                         break
-                    else:
-                        while True:
-                            text = random.choice(response_template['read_message_verify_receiver_name_number'])
-                            # update to the response to the db
-                            reply_result = res_max(cfg.dataset_path_db, 'write', text)
-                            max.text_to_speech_microsoft(cfg, text)
-                            text = max.speech_to_text_microsoft()
-                            if any(key in text.casefold() for key in ['one', '1']):
-                                receiver = 'Ole'
-                                break
-                            elif any(key in text.casefold() for key in ['two', '2']):
-                                receiver = 'Simon'
-                                break
-                            elif any(key in text.casefold() for key in ['three', '3']):
-                                receiver = 'Dimi'
-                                break
-                            elif any(key in text.casefold() for key in ['four', '4']):
-                                receiver = 'Morten'
-                                break
-                            elif any(key in text.casefold() for key in ['five', '5']):
-                                receiver = 'Casper'
-                                break
-                            elif any(key in text.casefold() for key in ['six', '6']):
-                                receiver = 'Chen'
-                                break
-                            else:
-                                continue
-                        break
+                    # else:
+                    #     while True:
+                    #         # text = random.choice(response_template['read_message_verify_receiver_name_number'])
+                    #         # update to the response to the db
+                    #         reply_result = res_max(cfg.dataset_path_db, 'write', text)
+                    #         max.text_to_speech_microsoft(cfg, text)
+                    #         text = max.speech_to_text_microsoft()
+                    #         if any(key in text.casefold() for key in ['one', '1']):
+                    #             receiver = 'Ole'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['two', '2']):
+                    #             receiver = 'Simon'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['three', '3']):
+                    #             receiver = 'Dimi'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['four', '4']):
+                    #             receiver = 'Morten'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['five', '5']):
+                    #             receiver = 'Casper'
+                    #             break
+                    #         elif any(key in text.casefold() for key in ['six', '6']):
+                    #             receiver = 'Chen'
+                    #             break
+                    #         else:
+                    #             continue
+                    #     break
 
-                text = random.choice(response_template['send_message_receiver_not_understand'])
+                text = random.choice(response_template['read_message_verify_receiver_name_number'])
                 # update to the response to the db
                 reply_result = res_max(cfg.dataset_path_db, 'write', text)
                 max.text_to_speech_microsoft(cfg, text)
@@ -222,7 +222,7 @@ def call_message(max, cfg, text, response_template):
                     password = password.replace(i,'')
                 print(password)
                 if len(password) > 0:
-                    auth_result = auth(cfg.dataset_path_db, receiver, password)
+                    auth_result = auth(cfg.dataset_path_db, receiver, password.lower())
                     if auth_result == "3":
                         text = random.choice(response_template['send_message_error'])
                         # update to the response to the db
@@ -230,7 +230,7 @@ def call_message(max, cfg, text, response_template):
                         max.text_to_speech_microsoft(cfg, text)
                         return
                     elif auth_result == '1':
-                        text = random.choice(response_template['read_message_receiver_no_message']).replace("#receiver", receiver)
+                        text = random.choice(response_template['read_message_receiver_not_registered']).replace("#receiver", receiver)
                         # update to the response to the db
                         reply_result = res_max(cfg.dataset_path_db, 'write', text)
                         max.text_to_speech_microsoft(cfg, text)
